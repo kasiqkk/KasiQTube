@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "apt-get update && apt-get install -y yt-dlp && node server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "ytdl-core": "^4.11.5"
+    "ytdl-core": "^4.11.5",
+    "yt-dlp": "^2025.3.17"
   }
 }

@@ -28,8 +28,8 @@ app.get('/download', async (req, res) => {
 
   // 1. Primeiro, baixar o vídeo
   const ytCommand = format === 'mp3'
-    ? `yt-dlp --cookies "${cookiesPath}" -f bestaudio --extract-audio --audio-format mp3 -o "${tempOutputFile}" "${videoUrl}"`
-    : `yt-dlp --cookies "${cookiesPath}" -f bestvideo+bestaudio --merge-output-format ${format} -o "${tempOutputFile}" "${videoUrl}"`;
+    ? `npx yt-dlp --cookies "${cookiesPath}" -f bestaudio --extract-audio --audio-format mp3 -o "${tempOutputFile}" "${videoUrl}"`
+    : `npx yt-dlp --cookies "${cookiesPath}" -f bestvideo+bestaudio --merge-output-format ${format} -o "${tempOutputFile}" "${videoUrl}"`;
 
   exec(ytCommand, (error, stdout, stderr) => {
     if (error) {
@@ -39,7 +39,7 @@ app.get('/download', async (req, res) => {
     }
 
     // 2. Depois, buscar o título do vídeo
-    const titleCommand = `yt-dlp --cookies "${cookiesPath}" -e "${videoUrl}"`;
+    const titleCommand = `npx yt-dlp --cookies "${cookiesPath}" -e "${videoUrl}"`;
 
     exec(titleCommand, (titleError, titleStdout) => {
       if (titleError) {
