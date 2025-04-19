@@ -24,7 +24,7 @@ app.get('/download', async (req, res) => {
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
 
   const tempOutputFile = path.join(outputDir, `download.${format}`);
-  const cookiesPath = 'C:\\Users\\caio\\Downloads\\KasiQTube-DownloaderYT\\cookies.txt';
+  const cookiesPath = path.resolve(__dirname, 'cookies.txt');
 
   // 1. Primeiro, baixar o vídeo
   const ytCommand = format === 'mp3'
